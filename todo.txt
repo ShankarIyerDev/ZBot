@@ -1,0 +1,14 @@
+TODO:
+
+1. Download Python 3.6 on local machine (Make sure Bash is also installed)
+2. Install git repository on local machine
+3. Write script to test Bot's capability to send and delete messages
+4. add reactions
+5. add and remove roles
+6. change and manage nicknames
+7. handle user interaction for signing up for a queue
+8. adding and deleting channels
+9. Creating images with user generated text (see NotSoBot github)
+10. Creating and handling brackets
+11. Creating maplists
+12. Teardown
