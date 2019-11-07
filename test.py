@@ -1,7 +1,8 @@
 # Work with Python 3.6
 import discord
 
-TOKEN = 'NjQwOTg5OTI2Nzc0NjY5Mzcz.XcSYHg.ZPJoz966A8fnYGQvqtASF9nQCRE'
+#TOKEN = open('ZBot_Token.txt', 'r')
+TOKEN = 'NjQwOTg5OTI2Nzc0NjY5Mzcz.XcShpw.iIaxtBNd9_hP5YS01Mt_spuss28'
 
 client = discord.Client()
 
@@ -11,9 +12,26 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
+    if message.content.startswith('!ayo'):
+        msg = 'ayo {0.author.mention}'.format(message)
         await message.channel.send(msg)
+
+    if message.content.startswith('!sup'):
+        msg = 'sup {0.author.mention}'.format(message)
+        await message.channel.send(msg)
+
+    if message.content.startswith('!fuckyou'):
+        msg = 'Fuck you, {0.author.mention}'.format(message)
+        await message.channel.send(msg)
+
+    if message.content.startswith('!philwall'):
+        msg = '<:cursedPhil:614184742522454024><:bluephil:614217661781508148><:pinkphil:614217661714268161><:redphil:614217661639032832><:philred:614184742111412236> \n<:cursedPhil:614184742522454024><:bluephil:614217661781508148><:pinkphil:614217661714268161><:redphil:614217661639032832><:philred:614184742111412236> \n<:cursedPhil:614184742522454024><:bluephil:614217661781508148><:pinkphil:614217661714268161><:redphil:614217661639032832><:philred:614184742111412236> \n<:cursedPhil:614184742522454024><:bluephil:614217661781508148><:pinkphil:614217661714268161><:redphil:614217661639032832><:philred:614184742111412236> \n<:cursedPhil:614184742522454024><:bluephil:614217661781508148><:pinkphil:614217661714268161><:redphil:614217661639032832><:philred:614184742111412236> \n'.format(message)
+        await message.channel.send(msg)
+
+    if message.content.startswith('!dabchain'):
+        msg = '<:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n '.format(message)
+        await message.channel.send(msg)
+
 
 @client.event
 async def on_ready():
