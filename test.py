@@ -19,10 +19,6 @@ async def on_message(message):
         msg = 'ayo {0.author.mention}'.format(message)
         await message.channel.send(msg)
 
-    if message.content.startswith('!sup'):
-        msg = 'sup {0.author.mention}'.format(message)
-        await message.channel.send(msg)
-
     if message.content.startswith('!fuckyou'):
         msg = 'Fuck you, {0.author.mention}'.format(message)
         await message.channel.send(msg)
@@ -35,6 +31,13 @@ async def on_message(message):
         msg = '<:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n <:zzdab:614185041194647612> \n <:zzdab2:614185041203036160> \n '.format(message)
         await message.channel.send(msg)
 
+    if message.content.startswith('!pogwall'):
+        msg = '<a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974>\n<a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974>\n<a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974>\n<a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974>\n<a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974><a:pogwall:642146937490898974>'.format(message)
+        await message.channel.send(msg)
+
+    if message.content.startswith('!dekudancers'):
+        msg = '<a:DekuDance1:642150739472416811><a:DekuDance1:642150739472416811><a:DekuDance1:642150739472416811><a:DekuDance1:642150739472416811>\n<a:DekuDance2:642150726042386432><a:DekuDance2:642150726042386432><a:DekuDance2:642150726042386432><a:DekuDance2:642150726042386432>'.format(message)
+        await message.channel.send(msg)
 
 @client.event
 async def on_ready():
