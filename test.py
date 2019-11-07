@@ -1,7 +1,7 @@
 # Work with Python 3.6
 import discord
 
-TOKEN = 'NjQwOTg5OTI2Nzc0NjY5Mzcz.XcSXsg.CNfZjNFtM7wt1_C9lWWTvrXD8fY'
+TOKEN = 'NjQwOTg5OTI2Nzc0NjY5Mzcz.XcSYHg.ZPJoz966A8fnYGQvqtASF9nQCRE'
 
 client = discord.Client()
 
@@ -13,7 +13,7 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
+        await message.channel.send(msg)
 
 @client.event
 async def on_ready():
