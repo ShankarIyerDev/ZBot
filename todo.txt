@@ -1,9 +1,9 @@
 TODO:
 
-1. Download Python 3.6 on local machine (Make sure Bash is also installed)
-2. Install git repository on local machine
-3. Write script to test Bot's capability to send and delete messages
-4. add reactions
+1. Download Python 3.6 on local machine (Make sure Bash is also installed) -- DONE
+2. Install git repository on local machine -- DONE
+3. Write script to test Bot's capability to send and delete messages -- DONE
+4. add/remove reactions -- DONE
 5. add and remove roles
 6. change and manage nicknames
 7. handle user interaction for signing up for a queue
