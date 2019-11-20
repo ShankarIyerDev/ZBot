@@ -4,7 +4,7 @@ TODO:
 2. Install git repository on local machine -- DONE
 3. Write script to test Bot's capability to send and delete messages -- DONE
 4. add/remove reactions -- DONE
-5. add and remove roles
+5. add and remove roles -- DONE
 6. change and manage nicknames
 7. handle user interaction for signing up for a queue
 8. adding and deleting channels
