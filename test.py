@@ -58,7 +58,41 @@ async def on_message(message):
         #await message.remove_reaction('<:cursedPhil:614184742522454024>')
         #await message.remove_reaction('<:redphil:614217661639032832>')
 
+    #ADD ROLE
+    if message.content.startswith('!Captain'):
+        guild = message.guild
+        #check if role already exists, should only have to do once
+        role = discord.utils.get(guild.roles, name='Captains')
+        if role==None:
+            await guild.create_role(name='Captains', color=discord.Colour(0x9500ff), mentionable=True, hoist=True)
+        role = discord.utils.get(message.guild.roles, name='Captains')
+        user = message.author
+        await user.add_roles(role)
 
+    #Remove Role
+    if message.content.startswith('!RemoveCaptain'):
+        guild = message.guild
+        role = discord.utils.get(guild.roles, name='Captains')
+        user=message.author
+        await user.remove_roles(role)
+
+    #Add specific role based on user input
+    if message.content.startswith('!teamrole'):
+        guild = message.guild
+        user = message.author
+        msg = 'What is the name of your team?'
+
+        #def check(user):
+        #    return user == message.author
+
+        await message.channel.send(msg)
+        query= await client.wait_for('message', timeout=60.0)
+        team = query.content
+        role = discord.utils.get(guild.roles, name=team)
+        if role==None:
+            await guild.create_role(name=team, color=discord.Colour(0x080606), mentionable=True, hoist=True)
+        role = discord.utils.get(message.guild.roles, name=team)
+        await user.add_roles(role)
 
 @client.event
 async def on_ready():
