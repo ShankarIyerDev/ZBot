@@ -59,28 +59,28 @@ async def on_message(message):
         #await message.remove_reaction('<:redphil:614217661639032832>')
 
     #ADD ROLE
-    if message.content.startswith('!captain'):
+    if message.content==('!captain'):
         guild = message.guild
         #check if role already exists, should only have to do once
-        role = discord.utils.get(guild.roles, name='Captains')
+        role = discord.utils.get(guild.roles, name='Captain')
         if role==None:
-            await guild.create_role(name='Captains', color=discord.Colour(0x9500ff), mentionable=True, hoist=True)
-        role = discord.utils.get(guild.roles, name='Captains')
+            await guild.create_role(name='Captain', color=discord.Colour(0x9500ff), mentionable=True, hoist=True)
+        role = discord.utils.get(guild.roles, name='Captain')
         user = message.author
         await user.add_roles(role)
 
     #Remove Role
-    if message.content.startswith('!removecaptain'):
+    if message.content==('!removecaptain'):
         guild = message.guild
-        role = discord.utils.get(guild.roles, name='Captains')
+        role = discord.utils.get(guild.roles, name='Captain')
         user=message.author
         await user.remove_roles(role)
 
     #Add specific role based on user input, but only if you are a captain
-    if message.content.startswith('!teamrole'):
+    if message.content==('!teamrole'):
         guild = message.guild
         user = message.author
-        role = discord.utils.get(guild.roles, name='Captains')
+        role = discord.utils.get(guild.roles, name='Captain')
 
         #Captain check
         if role in user.roles:
@@ -96,10 +96,10 @@ async def on_message(message):
             role1 = discord.utils.get(guild.roles, name=team)
             await user.add_roles(role1)
         else:
-            await message.channel.send("You don't have the Captains role, so you cannot add a team. Use !captain to grab the Captains role.")
+            await message.channel.send("You don't have the Captain role, so you cannot add a team. Use !captain to grab the Captain role.")
 
     #Remove team role
-    if message.content.startswith('!removeteam'):
+    if message.content==('!removeteam'):
         guild = message.guild
         user=message.author
         msg = 'What is the name of your team?'
@@ -108,6 +108,50 @@ async def on_message(message):
         team = query.content
         role = discord.utils.get(guild.roles, name=team)
         await user.remove_roles(role)
+
+    #register your team.
+    if message.content==('!register'):
+        guild = message.guild
+        user = message.author
+        role = discord.utils.get(guild.roles, name='Captain')
+
+        #Captain check
+        if role in user.roles:
+            msg = 'What is your FC?'
+            await message.channel.send(msg)
+            query= await client.wait_for('message', timeout=60.0)
+            FC = query.content
+            newNick=user.name + '::' + FC
+            role1 = discord.utils.get(guild.roles, name='registered')
+
+            # #Only create a role if it doesn't exist, to avoid duplicates.
+            # if role1==None:
+            #     await guild.create_role(name="registered")
+            #role1 = discord.utils.get(guild.roles, name=team)
+            await user.add_roles(role1)
+            await user.edit(nick=newNick)
+        else:
+            await message.channel.send("You don't have the Captain role, so you cannot register. Use !captain to grab the Captain role.")
+
+
+    #unregister your team.
+    if message.content==('!unregister'):
+        guild = message.guild
+        user = message.author
+        role = discord.utils.get(guild.roles, name='registered')
+        await user.remove_roles(role)
+        await user.edit(nick=user.name)
+        
+    #help command
+    if message.content.startswith('!!help'):
+        embed = discord.Embed(title="ZBot Commands", description="List of ZBot capabilities.", color=0x583dc7)
+        embed.add_field(name="!captain", value="Gives you the captain role and access to other commands.", inline=False)
+        embed.add_field(name="!removecaptain", value="Removes the captain role.", inline=False)
+        embed.add_field(name="!teamrole", value="Prompts you for a team name and gives you a team role.", inline=False)
+        embed.add_field(name="!removeteam", value="Removes your team if you have the role.", inline=False)
+        embed.add_field(name="!register", value="Prompts you for a friend code and changes your nickname to have a friend code.", inline=False)
+        embed.add_field(name="!unregister", value="Reverses what !register does.", inline=False)
+        await message.channel.send(content=None, embed=embed)
 
 @client.event
 async def on_ready():
